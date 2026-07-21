@@ -1,0 +1,6 @@
+{
+  "name": "Crypto Exchanges Directory",
+  "description": "Explore and discover Web3 crypto exchanges, DEXs, custody solutions, and hardware wallets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
