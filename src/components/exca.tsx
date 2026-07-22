@@ -1,6 +1,8 @@
 import React from 'react';
 import { Star, ShieldCheck, ArrowUpRight } from 'lucide-react';
 import { CryptoExchange } from '../types';
+import { AssetImage } from './AssetImage';
+import { getChainIconUrl, getExchangeLogoUrl } from '../utils/icon';
 
 interface ExchangeCardProps {
   exchange: CryptoExchange;
@@ -44,9 +46,13 @@ export const ExchangeCard: React.FC<ExchangeCardProps> = ({
         {/* Brand Icon + Name Header */}
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-3">
-            <div className={`w-10 h-10 rounded-xl ${exchange.bgIconColor || 'bg-blue-600'} flex items-center justify-center text-white font-extrabold text-sm shadow-xs group-hover:scale-105 transition-transform`}>
-              {exchange.name.substring(0, 2).toUpperCase()}
-            </div>
+            <AssetImage
+              src={getExchangeLogoUrl(exchange)}
+              alt={`${exchange.name} logo`}
+              fallback={exchange.name.substring(0, 2).toUpperCase()}
+              className={`w-10 h-10 rounded-xl object-cover shadow-xs group-hover:scale-105 transition-transform ${exchange.bgIconColor || 'bg-blue-600'}`}
+              fallbackClassName="flex items-center justify-center text-white font-extrabold text-sm"
+            />
             <div>
               <h3 className="font-bold text-slate-900 text-base group-hover:text-blue-600 transition-colors flex items-center gap-1.5">
                 {exchange.name}
@@ -84,9 +90,16 @@ export const ExchangeCard: React.FC<ExchangeCardProps> = ({
           {exchange.chains.slice(0, 3).map((chain) => (
             <span
               key={chain}
-              className="px-1.5 py-0.5 rounded text-[10px] bg-slate-100 text-slate-700 font-medium"
+              className="px-1.5 py-0.5 rounded text-[10px] bg-slate-100 text-slate-700 font-medium flex items-center gap-1"
             >
-              {chain}
+              <AssetImage
+                src={getChainIconUrl(chain)}
+                alt={`${chain} network logo`}
+                fallback={chain.slice(0, 2).toUpperCase()}
+                className="w-3.5 h-3.5 rounded-full object-cover flex-shrink-0"
+                fallbackClassName="w-3.5 h-3.5 rounded-full bg-slate-700 text-white flex items-center justify-center text-[8px] font-black"
+              />
+              <span>{chain}</span>
             </span>
           ))}
           {exchange.chains.length > 3 && (

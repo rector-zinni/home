@@ -1,6 +1,6 @@
 import { CryptoExchange, CollectionCard } from '../types';
 
-export const INITIAL_EXCHANGES: CryptoExchange[] = [
+export const vardatrS: CryptoExchange[] = [
   {
     id: 'zengo',
     name: 'Zengo',

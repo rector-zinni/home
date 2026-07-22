@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Repeat, ShieldCheck, HardDrive } from 'lucide-react';
-import { RELATED_COLLECTIONS } from '../data/exchanges';
+import { RELATED_COLLECTIONS } from '../data/ex';
 
 interface RelatedCollectionsProps {
   onSelectCategory: (categoryName: string) => void;

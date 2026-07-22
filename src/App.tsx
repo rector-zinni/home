@@ -2,11 +2,11 @@ import React, { useState, useMemo } from 'react';
 import { Header } from './components/Header';
 import { HeroBanner } from './components/HeroBanner';
 import { FilterSidebar } from './components/FilterSidebar';
-import { ExchangeCard } from './components/ExchangeCard';
+import { ExchangeCard } from './components/exca';
 import { ExchangeDetailModal } from './components/ExchangeDetailModal';
 import { RelatedCollections } from './components/RelatedCollections';
 import { Footer } from './components/Footer';
-import { INITIAL_EXCHANGES } from './data/exchanges';
+import { vardatrS } from './data/ex';
 import { CryptoExchange, CategoryTag, ChainOption } from './types';
 import { Search, SlidersHorizontal, Star, LayoutGrid, ListFilter } from 'lucide-react';
 
@@ -22,7 +22,7 @@ export default function App() {
 
   // Filter Logic
   const filteredExchanges = useMemo(() => {
-    return INITIAL_EXCHANGES.filter((ex) => {
+    return vardatrS.filter((ex) => {
       // Search Query
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase();
@@ -83,7 +83,7 @@ export default function App() {
       />
 
       {/* Hero Banner with Title & Intro */}
-      <HeroBanner totalCount={INITIAL_EXCHANGES.length} />
+      <HeroBanner totalCount={vardatrS.length} />
 
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">

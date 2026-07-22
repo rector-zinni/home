@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Check, FilterX } from 'lucide-react';
-import { ALL_CHAINS } from '../data/exchanges';
+import { ALL_CHAINS } from '../data/ex';
 import { CategoryTag, ChainOption } from '../types';
+import { AssetImage } from './AssetImage';
+import { getChainIconUrl } from '../utils/icon';
 
 interface FilterSidebarProps {
   selectedChain: ChainOption | null;
@@ -73,9 +75,13 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
-                    <span className={`w-4 h-4 rounded-full ${c.color} text-white flex items-center justify-center text-[10px] font-black`}>
-                      {c.icon.slice(0, 1)}
-                    </span>
+                    <AssetImage
+                      src={getChainIconUrl(c.name)}
+                      alt={`${c.name} network logo`}
+                      fallback={c.icon.slice(0, 1)}
+                      className={`w-4 h-4 rounded-full object-cover ${c.color}`}
+                      fallbackClassName="text-white flex items-center justify-center text-[10px] font-black"
+                    />
                     <span>{c.name}</span>
                   </div>
                   {isSelected && <Check className="w-3.5 h-3.5 text-blue-600" />}
